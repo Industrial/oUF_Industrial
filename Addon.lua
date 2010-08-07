@@ -221,7 +221,6 @@ function create_unitframe (frame, unit)
 	power:SetHeight(power_height)
 	power:SetStatusBarTexture(power_texture)
 
-	oUF.colors.power.MANA = {0/255, 153/255, 204/255}
 	power.frequentUpdates = true
 	power.colorPower = true
 	power.PostUpdate = update_power
