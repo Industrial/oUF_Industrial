@@ -162,6 +162,14 @@ function update_info (frame)
 	frame.Info:SetText(('%s %s'):format(unit_level(unit), unit_threat(unit)))
 end
 
+function update_pet_happiness(Happiness, unit, happinessLevel)
+	if happinessLevel < 3 then
+		Happiness:Show()
+	else
+		Happiness:Hide()
+	end
+end
+
 function create_unitframe (frame, unit)
 	local background = frame:CreateTexture(nil, 'BACKGROUND')
 	local health = CreateFrame('StatusBar', nil, frame)
@@ -371,6 +379,8 @@ function create_pet_unitframe(frame, unit)
 	happiness:SetPoint(MC, frame, TL)
 	happiness:SetWidth(16)
 	happiness:SetHeight(16)
+
+	happiness.PostUpdate = update_pet_happiness
 
 	frame.Happiness = happiness
 end
