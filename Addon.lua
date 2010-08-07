@@ -11,7 +11,7 @@ local margin = 1
 local translucency = 1
 
 local offset_x = 0
-local offset_y = -350
+local offset_y = -250
 
 local buff_margin = margin / 2
 
