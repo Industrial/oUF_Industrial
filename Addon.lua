@@ -144,17 +144,15 @@ function process_icon (frame, button)
 	end
 end
 
-function update_health (frame, event, unit, bar, min, max)
-	bar.value:SetText(format_value(min))
-	update_info(frame)
+function update_health (Health, unit, min, max)
+	Health.value:SetText(format_value(min))
 end
 
-function update_power (frame, event, unit, bar, min, max)
-	bar.value:SetText(format_value(min > 0 and min or ''))
-	update_info(frame)
+function update_power (Health, unit, min, max)
+	Health.value:SetText(format_value(min > 0 and min or ''))
 end
 
-function update_info (frame)
+function update_info (frame, unit)
 	local unit = frame.unit
 	if not UnitExists(unit) then return end
 
@@ -198,6 +196,10 @@ function create_unitframe (frame, unit)
 	health:SetStatusBarTexture(health_texture)
 	health:SetStatusBarColor(unpack(health_color))
 
+	health.frequentUpdates = true
+	health.colorClass = true
+	health.PostUpdate = update_health
+
 	health.info:SetPoint(ML, health, ML, text_offset_x, 1)
 	health.info:SetPoint(MR, health.value, ML)
 	health.info:SetJustifyH('LEFT')
@@ -218,8 +220,11 @@ function create_unitframe (frame, unit)
 	power:SetWidth(power_width)
 	power:SetHeight(power_height)
 	power:SetStatusBarTexture(power_texture)
+
 	oUF.colors.power.MANA = {0/255, 153/255, 204/255}
+	power.frequentUpdates = true
 	power.colorPower = true
+	power.PostUpdate = update_power
 
 	power.info:SetPoint(ML, power, ML, text_offset_x, text_offset_y)
 	power.info:SetPoint(MR, power.value, ML)
@@ -326,8 +331,6 @@ function create_unitframe (frame, unit)
 	frame.MasterLooter = mlicon
 	frame.Name = health.info
 	frame.PostCreateAuraIcon = process_icon
-	frame.PostUpdateHealth = update_health
-	frame.PostUpdatePower = update_power
 	frame.Power = power
 	frame.RaidIcon = ricon
 	frame.Threat = threat
