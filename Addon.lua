@@ -5,9 +5,9 @@ local BL, BC, BR = 'BOTTOMLEFT', 'BOTTOM', 'BOTTOMRIGHT'
 
 local frame_name = 'oUF_Industrial_'
 
-local padding = 1
-local spacing = 1
-local margin = 5
+local padding = 0
+local spacing = 0
+local margin = 1
 local translucency = 1
 
 local offset_x = 0
@@ -15,16 +15,16 @@ local offset_y = -250
 
 local buff_margin = margin / 2
 
-local bar_width = 200 - padding * 2
+local bar_width = 250 - padding * 2
 local bar_texture = [[Interface\AddOns\oUF_Industrial\media\textures\statusbar]]
 
 local health_width = bar_width
-local health_height = 20
+local health_height = 25
 local health_texture = bar_texture
 local health_color = {0.4, 0.4, 0.4, translucency}
 
 local power_width = bar_width
-local power_height = 20
+local power_height = 25
 local power_texture = bar_texture
 local power_color = {0.5, 1, 0, translucency}
 
@@ -36,9 +36,9 @@ _G.oUF.colors.power.RUNIC_POWER = {0.2, 0.6, 0.6}
 
 local cast_color = {0.6, 0.6, 0.2, translucency}
 
-local background_color = {0.6, 0.6, 0.6, translucency / 2}
+local background_color = {0, 0, 0, translucency/2}
 
-local text_offset_x = 3
+local text_offset_x = 6
 local text_offset_y = 1
 local text_font = [[Interface\AddOns\oUF_Industrial\media\fonts\Calibri.ttf]]
 local text_color = {0.8, 0.8, 0.8}
