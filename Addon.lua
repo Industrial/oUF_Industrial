@@ -334,8 +334,8 @@ function create_unitframe (frame, unit)
   -- Frame
   frame:RegisterForClicks('anyup')
   frame:SetAttribute('type2', 'menu')
-  frame:SetAttribute('initial-width', Health:GetWidth() + padding * 2)
-  frame:SetAttribute('initial-height', Health:GetHeight() + Power:GetHeight() + padding * 2 + spacing)
+  frame:SetWidth(Health:GetWidth() + padding * 2)
+  frame:SetHeight(Health:GetHeight() + Power:GetHeight() + padding * 2 + spacing)
   frame.menu = show_menu
   frame.Buffs = Buffs
   frame.Castbar = Castbar
@@ -382,7 +382,7 @@ function create_targettarget_unitframe (frame, unit)
 
   frame.Power:SetHeight(0)
 
-  frame:SetAttribute('initial-height', frame.Health:GetHeight() + padding * 2)
+  frame:SetHeight(frame.Health:GetHeight() + padding * 2)
 
   frame.Power = nil
   frame.PostUpdatePower = nil
@@ -411,7 +411,7 @@ function create_focus_unitframe (frame, unit)
   create_targettarget_unitframe(frame, unit)
 
   frame.Health:SetWidth(health_width / 2 - padding - margin / 2)
-  frame:SetAttribute('initial-width', frame.Health:GetWidth() + padding * 2)
+  frame:SetWidth(frame.Health:GetWidth() + padding * 2)
 end
 
 function create_focustarget_unitframe (frame, unit)
