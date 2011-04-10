@@ -65,6 +65,7 @@ local unit_class
 local unit_level
 local unit_name
 local unit_tapped
+local unit_combopoints
 local update_health
 local update_power
 local update_info
@@ -148,6 +149,18 @@ function unit_threat (unit)
   end
 end
 
+function unit_combopoints (unit)
+  local output = ''
+  if UnitIsEnemy('player', unit) then
+    -- TODO: GetComboPoints docs says something about vehicle .. fucking vehicles..
+    local combo_points = GetComboPoints('player')
+    if combo_points and combo_points > 0 then
+      output = combo_points..'cp'
+    end
+  end
+  return output
+end
+
 function process_icon (button)
   if button and button.icon then
     button.icon:SetTexCoord(.07, .93, .07, .93)
@@ -169,7 +182,7 @@ function update_info (frame, unit)
   if not UnitExists(unit) then return end
 
   frame.Name:SetText(('%s%s'):format(unit_name(unit), unit_tapped(unit)))
-  frame.Info:SetText(('%s %s'):format(unit_level(unit), unit_threat(unit)))
+  frame.Info:SetText(('%s %s %s'):format(unit_level(unit), unit_threat(unit), unit_combopoints(unit)))
 end
 
 function update_pet_happiness(Happiness, unit, happinessLevel)
@@ -307,17 +320,17 @@ function create_unitframe (frame, unit)
   Debuffs['growth-y'] = 'DOWN'
   Debuffs.PostCreateIcon = process_icon
 
-  -- Leader icon
+  -- Leader Icon
   Leader:SetPoint(MC, frame, TL)
   Leader:SetWidth(16)
   Leader:SetHeight(16)
 
-  -- raid icon
+  -- Raid Icon
   Raidicon:SetPoint(MC, frame, TC)
   Raidicon:SetWidth(16)
   Raidicon:SetHeight(16)
 
-  -- master looter icon
+  -- Master Looter Icon
   Masterlooter:SetPoint(ML, Leader, MR)
   Masterlooter:SetWidth(16)
   Masterlooter:SetHeight(16)
@@ -458,5 +471,4 @@ focus:SetPoint(BR, player, TR, 0, margin)
 focustarget:SetPoint(BR, focus, TR, 0, margin)
 
 RuneFrame:Hide()
-
 
