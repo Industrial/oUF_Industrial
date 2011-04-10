@@ -427,25 +427,25 @@ oUF:RegisterStyle('Industrial-focus', create_focus_unitframe)
 oUF:RegisterStyle('Industrial-focustarget', create_focustarget_unitframe)
 
 oUF:SetActiveStyle('Industrial-player')
-local player       = oUF:Spawn('player', frame_name..'player')
+local player = oUF:Spawn('player', frame_name..'player')
 
 oUF:SetActiveStyle('Industrial-target')
-local target       = oUF:Spawn('target', frame_name..'target')
+local target = oUF:Spawn('target', frame_name..'target')
 
 oUF:SetActiveStyle('Industrial-targettarget')
 local targettarget = oUF:Spawn('targettarget', frame_name..'targettarget')
 
 oUF:SetActiveStyle('Industrial-pet')
-local pet          = oUF:Spawn('pet', frame_name..'pet')
+local pet = oUF:Spawn('pet', frame_name..'pet')
 
 oUF:SetActiveStyle('Industrial-pettarget')
-local pettarget    = oUF:Spawn('pettarget', frame_name..'pettarget')
+local pettarget = oUF:Spawn('pettarget', frame_name..'pettarget')
 
 oUF:SetActiveStyle('Industrial-focus')
-local focus        = oUF:Spawn('focus', frame_name..'focus')
+local focus = oUF:Spawn('focus', frame_name..'focus')
 
 oUF:SetActiveStyle('Industrial-focustarget')
-local focustarget  = oUF:Spawn('focustarget', frame_name..'focustarget')
+local focustarget = oUF:Spawn('focustarget', frame_name..'focustarget')
 
 targettarget:SetScript('OnUpdate', targettarget.PLAYER_ENTERING_WORLD)
 
